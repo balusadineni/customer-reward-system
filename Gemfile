@@ -1,11 +1,10 @@
-	source 'https://rubygems.org'
+source 'https://rubygems.org'
 ruby '2.7.6'
-gem 'sinatra', :github => 'sinatra/sinatra'
+gem 'sinatra', github: 'sinatra/sinatra'
 
 # other dependencies
 
-
-gem 'json' 
+gem 'json'
 gem 'logger'
 
 group :test do

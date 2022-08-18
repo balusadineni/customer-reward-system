@@ -1,20 +1,19 @@
 require File.expand_path './spec_helper.rb', __dir__
 
 describe ReferalLogProcessor do
-
   let(:referal_log) { '2018-06-12 09:41 A recommends B' }
   let(:acceptance_log) { '2018-06-14 09:41 B accepts' }
-  
-  let(:refal_log_details) do 
+
+  let(:refal_log_details) do
     {
-      :customer_referee => 'A',
-      :customer_refered => 'B'
+      customer_referee: 'A',
+      customer_refered: 'B'
     }
   end
 
-  let(:acceptance_log_details) do 
+  let(:acceptance_log_details) do
     {
-      :customer_accepted => 'B',
+      customer_accepted: 'B'
     }
   end
 
@@ -26,14 +25,14 @@ describe ReferalLogProcessor do
     end
 
     it 'checks if the action iss valid?' do
-      referal_log = "2018-06-14 09:41 B accep"
+      referal_log = '2018-06-14 09:41 B accep'
       service = described_class.new(referal_log)
 
       expect(service.send(:valid?)).to be_falsey
     end
 
     it 'checks if log length is valid?' do
-      referal_log = "2018-06-14 09:41 B"
+      referal_log = '2018-06-14 09:41 B'
       service = described_class.new(referal_log)
 
       expect(service.send(:valid?)).to be_falsey

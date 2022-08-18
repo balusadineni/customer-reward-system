@@ -8,7 +8,6 @@ require './customer'
 require './file_reader'
 require './customer_score_calculator'
 
-
 get '/' do
   'Hello world!'
 end
