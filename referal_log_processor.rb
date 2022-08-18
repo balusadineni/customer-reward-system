@@ -37,11 +37,17 @@ class ReferalLogProcessor
 	end 
 
 	def log_valid?
-		parsed_referal_log.length() >= MINIMUM_LOG_LENGTH
+		return true if parsed_referal_log.length() >= MINIMUM_LOG_LENGTH
+
+		logger.error("Invalid log length - #{referal_log}")
+		false
 	end
 
 	def action_valid?
-		Actions::ALL.include?(log_action)
+		return true if Actions::ALL.include?(log_action)
+
+		logger.error("Invalid log action - #{referal_log}")
+		false
 	end
 
 	def process_customer_action
@@ -71,5 +77,9 @@ class ReferalLogProcessor
 
 	def new_customer
 		@new_customer ||= parsed_referal_log[Positions::NEW_CUSTOMER]
+	end
+
+	def logger
+		@logger ||= Logger.new(STDOUT)
 	end
 end

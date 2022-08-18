@@ -1,11 +1,13 @@
 require 'sinatra'
 require 'pry'
+require 'logger'
 
 require './customer_reward_service'
 require './referal_log_processor'
 require './customer'
 require './file_reader'
 require './customer_score_calculator'
+
 
 get '/' do
   'Hello world!'

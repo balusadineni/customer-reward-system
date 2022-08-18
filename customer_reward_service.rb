@@ -17,7 +17,7 @@ class CustomerRewardService
 	end
 
 	def scores
-		return unless valid?
+		return {} unless valid?
 
 		process_referal_logs
 		add_customers_involved
@@ -29,7 +29,14 @@ class CustomerRewardService
 	private 
 
 	def valid?
-		!referal_logs.empty?
+		referal_logs_not_empty?
+	end
+
+	def referal_logs_not_empty?
+		return true if !referal_logs.empty?
+
+		logger.error("Error - No logs found!")
+		false
 	end
 
 	def process_referal_logs
@@ -85,4 +92,8 @@ class CustomerRewardService
 
 		customers[customer_name].reference_accepted!
 	end
+
+	def logger
+    @logger ||= Logger.new(STDOUT)
+  end
 end

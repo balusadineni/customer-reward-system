@@ -6,6 +6,7 @@ gem 'sinatra', :github => 'sinatra/sinatra'
 
 
 gem 'json' 
+gem 'logger'
 
 group :test do
   gem 'rspec'
