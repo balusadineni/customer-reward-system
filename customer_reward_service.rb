@@ -47,7 +47,7 @@ class CustomerRewardService
 				referal_customer_details[CustomerTypes::CUSTOMER_REFEREE], 
 				referal_customer_details[CustomerTypes::CUSTOMER_REFERED]
 			)
-			make_customer_accepted(referal_customer_details[CustomerTypes::CUSTOMER_REFERED])
+			make_customer_accepted(referal_customer_details[CustomerTypes::CUSTOMER_ACCEPTED])
 		end
 	end
 

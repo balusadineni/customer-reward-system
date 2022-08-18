@@ -6,6 +6,8 @@ class ReferalLogProcessor
 		NEW_CUSTOMER = 4
 	end
 
+	MINIMUM_LOG_LENGTH = 3
+
 	module Actions
 		RECOMMENDS = 'recommends'
 		ACCEPTS = 'accepts'
@@ -31,8 +33,12 @@ class ReferalLogProcessor
 	private
 
 	def valid?
-		action_valid?
+		log_valid? && action_valid?
 	end 
+
+	def log_valid?
+		parsed_referal_log.length() >= MINIMUM_LOG_LENGTH
+	end
 
 	def action_valid?
 		Actions::ALL.include?(log_action)
